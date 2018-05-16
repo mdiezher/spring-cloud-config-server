@@ -40,6 +40,8 @@ pipeline {
       steps { 
         withCredentials([usernamePassword(credentialsId: 'a45693dc-92da-4927-8477-2aead390a698', passwordVariable: 'password', usernameVariable: 'username')]) {
            // some block
+           echo 'PASSWORD: $password'
+           echo 'USER: $usenamer'
            sh 'docker tag app-jenkins:test mdiezher/app-jenkins:stable'
            sh 'docker push mdiezher/app-jenkins:stable'
         }
