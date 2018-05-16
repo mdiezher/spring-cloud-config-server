@@ -37,12 +37,11 @@ pipeline {
       }
     }
     stage('Push Registry') {
-      steps {
-        echo 'Push registry'
-        sh 'docker tag app-jenkins:test mdiezher/app-jenkins:stable'
-        // This step should not normally be used in your script. Consult the inline help for details.
-        withDockerRegistry([credentialsId: 'a45693dc-92da-4927-8477-2aead390a698', url: 'docker.io/mdiezher/']) {
-             sh 'docker push mdiezher/app-jenkins:stable'
+      steps { 
+        withCredentials([usernamePassword(credentialsId: 'a45693dc-92da-4927-8477-2aead390a698', passwordVariable: 'password', usernameVariable: 'username')]) {
+           // some block
+           sh 'docker tag app-jenkins:test mdiezher/app-jenkins:stable'
+           sh 'docker push mdiezher/app-jenkins:stable'
         }
       }
     }
