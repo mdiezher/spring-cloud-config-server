@@ -30,6 +30,11 @@ pipeline {
         sh 'docker run --rm -name app-jenkins -id -p 80:80 app-jenkins:test'
         sh '/bin/nc -vz localhost 80'
       }
+      post {
+        always {
+	  sh 'docker container stop app-jenkins'	
+        }
+      }
     }
     stage('Push Registry') {
       steps {
