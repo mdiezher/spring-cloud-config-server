@@ -4,7 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         echo 'BUILD'
-        echo 'BUILD 2'
+	sh 'docker build -t app .'
       }
       post {
         always {
