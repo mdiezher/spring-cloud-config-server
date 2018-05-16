@@ -27,8 +27,8 @@ pipeline {
     stage('Test') {
       steps {
         echo 'TEST'
-        sh '/bin/nc -vz localhost 22'
-        sh '/bin/nc -vz localhost 8080'
+        sh 'docker run --rm -name app-jenkins -id -p 80:80 app-jenkins:test'
+        sh '/bin/nc -vz localhost 80'
       }
     }
     stage('Push Registry') {
