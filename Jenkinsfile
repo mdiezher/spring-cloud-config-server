@@ -34,8 +34,8 @@ pipeline {
     stage('Push Registry') {
       steps {
         echo 'Push registry'
-        sh 'docker tag app-jenkins:test app-jenkins:stable'
-        sh 'docker push app-jenkins:stable'
+        sh 'docker tag app-jenkins:test mdiezher/app-jenkins:stable'
+        sh 'docker push mdiezher/app-jenkins:stable'
       }
     }
   }
