@@ -4,7 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         echo 'BUILD'
-	sh 'docker build -t app-jenkins .'
+	sh 'docker build -t app-jenkins:test .'
       }
       post {
         always {
@@ -34,8 +34,8 @@ pipeline {
     stage('Push Registry') {
       steps {
         echo 'Push registry'
-        sh 'docker tag app:test app:stable'
-        sh 'docker push app:stable'
+        sh 'docker tag app-jenkins:test app-jenkins:stable'
+        sh 'docker push app-jenkins:stable'
       }
     }
   }
