@@ -1,14 +1,37 @@
 pipeline {
   agent any
   stages {
-    stage('Inicio') {
+    stage('Build') {
       steps {
-        echo 'Hola desde stage Inicio'
+        echo 'BUILD'
+        echo 'BUILD 2'
+      }
+      post {
+        always {
+          echo 'always execute'
+
+        }
+
+        failure {
+          echo 'it is fail'
+
+        }
+
+        success {
+          echo 'it is success'
+
+        }
+
       }
     }
-    stage('Test2') {
+    stage('Test') {
       steps {
-        echo 'Hola desde stage Test2'
+        echo 'TEST'
+      }
+    }
+    stage('Deploy') {
+      steps {
+        echo 'DEPLOY'
       }
     }
   }
