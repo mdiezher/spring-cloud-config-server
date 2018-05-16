@@ -35,7 +35,7 @@ pipeline {
       steps {
         echo 'Push registry'
         sh 'docker tag app:test app:stable'
-        sh 'docker push app:test app:stable'
+        sh 'docker push app:stable'
       }
     }
   }
